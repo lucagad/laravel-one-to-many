@@ -19,6 +19,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Titolo</th>
+        <th scope="col">Categoria</th>
         <th scope="col">Modifiche</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
       <tr>
         <td>{{ $post->id }}</td>
         <td>{{ $post->title }}</td>
+        <td>{{ $post->category ? $post->category->name : '-' }}</td>
         <td>
           <a class="btn btn-primary" href=" {{ route('admin.posts.show', $post)  }}">MOSTRA</a>
           <a class="btn btn-secondary" href="{{ route('admin.posts.edit', $post)  }}">MODIFICA</a>

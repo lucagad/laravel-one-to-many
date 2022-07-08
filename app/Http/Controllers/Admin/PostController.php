@@ -7,6 +7,7 @@ Use App\Http\Requests\PostsRequest;
 use Illuminate\Support\Str;
 
 Use App\Post;
+Use App\Category;
 
 class PostController extends Controller
 {
