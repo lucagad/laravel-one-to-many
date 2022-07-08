@@ -75,11 +75,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+
+        $categories = Category::all();
         $post = Post::find($id);
         
         if($post){
 
-            return view('admin.posts.edit', compact('post'));
+            return view('admin.posts.edit', compact('post'),compact('categories'));
 
         } else { abort(404, 'Post not present in the database');}
     }
@@ -95,6 +97,8 @@ class PostController extends Controller
     {
         
         $new_data = $request->all();
+
+        dd($new_data);
 
         if($post->title != $new_data['title']){
 
