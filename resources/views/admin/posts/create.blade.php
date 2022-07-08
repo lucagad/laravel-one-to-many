@@ -55,6 +55,29 @@
 
                     </div>
 
+                    <div class="mb-3">
+                        
+                        <label for="category_id" class="form-label">Categoria del Post</label>
+
+                        <select type="text"
+                                id="category_id" 
+                                name="category_id" 
+                                class="form-control @error('content') is-invalid @enderror">
+                            
+                                <option value="NULL" selected>Seleziona la Categoria</option>
+
+                                @foreach ($categories as $category )
+                                    <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                @endforeach
+
+                            </select>
+
+                        @error('type')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+
+                    </div>
+
                     {{-- <div class="mb-3">
                         <label for="image" class="form-label">URL Image</label>
                         <input type="text" 
