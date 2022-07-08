@@ -26,7 +26,6 @@ Route::middleware('auth')
     ->group(function(){
 
         Route::get('/','PageController@index')->name('home');
-
         Route::resource('posts', 'PostController');
 
 });

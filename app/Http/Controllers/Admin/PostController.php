@@ -98,8 +98,6 @@ class PostController extends Controller
         
         $new_data = $request->all();
 
-        dd($new_data);
-
         if($post->title != $new_data['title']){
 
             $new_data['slug'] = $this->createSlug($new_data['title']);

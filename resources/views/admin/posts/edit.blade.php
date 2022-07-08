@@ -31,11 +31,9 @@
 
                 {{-- Fine Preview post selezionato --}}
 
-                <form id="form-edit" action="{{ route('admin.posts.update', $post )}}" method="POST">
-
+                <form action="{{ route('admin.posts.update',$post)}}" method="POST">
                     @csrf
                     @method('PUT')
-
                     <div class="mb-3">
 
                         @if ($errors->any())
@@ -49,16 +47,13 @@
                         @endif
 
                         <label for="title" class="form-label">Titolo del Post</label>
-                            
-                        {{-- JQuery Error --}}
-                        <div id="error-title" class="invalid-feedback" ></div>
 
-                        <input type="text" id="title"
-                            value="{{$post->title}}"
-                            name="title" 
-                            class="form-control @error('title') is-invalid @enderror"
-                            placeholder="Titolo del Post"
-                            value="{{old('title',$post->title)}}">
+                        <input type="text" 
+                                id="title" 
+                                name="title" 
+                                class="form-control @error('title') is-invalid @enderror"
+                                placeholder="Titolo del Post"
+                                value="{{old('title',$post->title)}}">
 
                         @error('title')
                             <div class="invalid-feedback">{{$message}}</div>
@@ -67,19 +62,19 @@
                     </div>
 
                     <div class="mb-3">
-
+                        
                         <label for="content" class="form-label">Contenuto del Post</label>
 
-                        <textarea type="text" id="content" 
-                            value="{{$post->content}}"
-                            name="content" 
-                            class="form-control @error('content') is-invalid @enderror"
-                            placeholder="Contenuto del Post">{{old('content',$post->content)}}</textarea>
+                        <textarea type="text"
+                                id="content" 
+                                name="content" 
+                                class="form-control @error('content') is-invalid @enderror"
+                                placeholder="Contenuto del Post">{{old('content',$post->content)}}</textarea>
 
-                        @error('content')
+                        @error('type')
                             <div class="invalid-feedback">{{$message}}</div>
                         @enderror
-                        
+
                     </div>
 
                     <div class="mb-3">
@@ -89,21 +84,25 @@
                         <select type="text"
                                 id="category_id" 
                                 name="category_id" 
-                                class="form-control">
-                                    <option value="NULL" selected>Seleziona la Categoria</option>
+                                class="form-control @error('category_id') is-invalid @enderror">
+                            
+                                <option value="NULL" selected>Seleziona la Categoria</option>
 
                                 @foreach ($categories as $category )
                                     <option value="{{$category->id}}" >{{$category->name}}</option>
                                 @endforeach
-                        </select>
 
-                        {{-- @error('category_id')
+                            </select>
+
+                        @error('category_id')
                             <div class="invalid-feedback">{{$message}}</div>
-                        @enderror --}}
+                        @enderror
 
                     </div>
+
                     <button type="submit" class="btn btn-success">SALVA</button>
                 </form>
+
             </div>
         </div>
 
