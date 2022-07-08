@@ -19,8 +19,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->paginate(6);
-        
-        return view('admin.posts.index', compact('posts'));
+        $categories = Category::all();
+        return view('admin.posts.index', compact('posts','categories'));
     }
 
     /**
@@ -81,7 +81,7 @@ class PostController extends Controller
         
         if($post){
 
-            return view('admin.posts.edit', compact('post'),compact('categories'));
+            return view('admin.posts.edit', compact('post','categories'));
 
         } else { abort(404, 'Post not present in the database');}
     }
